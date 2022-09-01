@@ -1,7 +1,7 @@
 import React from 'react';
 import { useEffect, useState } from 'react';
 import api from '../../services/api';
-import Modal from '../../components/Modal';
+import ModalInfo from '../../components/ModalInfo';
 import BannerBackground from "../../assets/background.jpg";
 import Logo from "../../assets/bn.png";
 import
@@ -12,7 +12,6 @@ import
  WrapSearch,
  WrapMap,
  SearchInput,
- BtnSort,
  WrapCard,
  CardImage,
  WrapImageCard,
@@ -24,27 +23,32 @@ const Main = () => {
 const [caracters, setCaracters] = useState([]);
 const [search, setSearch] = useState("");
 const [modal, setModal] = useState();
-const [teste, setTeste] = useState([]);
+const [page, setPage] = useState(1);
 
+
+
+const handlePage = (
+    e
+  ) => {
+    setPage(e.target.value)
+  };
 
 useEffect(() => {
     const local = localStorage.getItem('data');
     if(local){
         setCaracters(JSON.parse(local))
     }else{
-        api.get("/character")
+        api.get(`/character?page=${page}`)
         .then((res) => {
-            setTeste(res.data)
             setCaracters(res.data.results);
-            localStorage.setItem('data', JSON.stringify(res.data.results));
+            // localStorage.setItem('data', JSON.stringify(res.data.results));
         })
     }
-}, []);
-console.log(teste)
+}, [page]);
 
     return(
         <>
-        {modal !== undefined && <Modal data={caracters[modal]} close={() => setModal()}/>}
+        {modal !== undefined && <ModalInfo data={caracters[modal]} close={() => setModal()}/>}
         <Container>
                 <HeaderImage src={BannerBackground} alt="Background" />
             <WrapBN>
@@ -52,8 +56,7 @@ console.log(teste)
             </WrapBN>
             <WrapSearch>
                 <SearchInput placeholder='Type a caracter name...' type="text" value={search} onChange={(e) => setSearch(e.target.value)}/>
-                <BtnSort>Name Sort</BtnSort>
-                <BtnSort>Species Sort</BtnSort>
+                <label htmlFor="number">Type 1 to 826</label><input id='number' type="number" value={page} onChange={handlePage}/>
             </WrapSearch>
             <WrapMap>
             {caracters.map((item, index) =>
