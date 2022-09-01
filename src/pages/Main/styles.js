@@ -29,6 +29,7 @@ export const WrapBN = styled.div`
 
 export const Banner = styled.img`
   width: 30vw;
+  min-width: 400px;
 `;
 
 export const WrapMap = styled.div`
@@ -44,14 +45,14 @@ export const WrapMap = styled.div`
   `;
 
 export const WrapSearch = styled.div`
-    width: 35%;
-    height: 4.5vh;
+    width: 90%;
+    height: 50px;
     display: flex;
     flex-direction: row;
     align-items: center;
     justify-content: center;
     gap: 2rem;
-    background-color: var(--background);
+    background-color: transparent;
     padding: 1rem;
     margin-top: 2rem;
     margin-bottom: 2rem;
@@ -73,6 +74,42 @@ export const SearchInput = styled.input`
  color: var(--words);
  ::placeholder{
  color: var(--primary);
+ }
+`;
+
+export const PageInput = styled.input`
+ width: 50px;
+ height: auto;
+ display: flex;
+ flex-wrap: wrap;
+ flex-direction: row;
+ align-items: center;
+ justify-content: center;
+ padding: 1rem;
+ border-radius: 999px;
+ border: none;
+ background-color: var(--lightBackground);
+ color: var(--words);
+ :hover{
+  color: var(--words);
+  box-shadow: rgba(240, 46, 170, 0.4) 0px 5px, rgba(240, 46, 170, 0.3) 0px 10px, rgba(240, 46, 170, 0.2) 0px 15px, rgba(240, 46, 170, 0.1) 0px 20px, rgba(240, 46, 170, 0.05) 0px 25px;
+  transition: all 300ms ease-in-out 50ms;
+  border: 1px solid var(--primary);
+  cursor: auto;
+}
+`;
+
+export const WrapPageInput = styled.div`
+ display: flex;
+ flex-direction: row;
+ align-items: center;
+ justify-content: center;
+ label{
+  color: var(--words);
+  background-color: var(--lightBackground);
+  font-size: 1rem;
+  border-radius: 999px;
+  padding: 1rem;
  }
 `;
 
@@ -118,14 +155,23 @@ export const WrapImageCard = styled.div`
  flex-direction: column;
  align-items: center;
  justify-content: center;
- width: 15vw;
- height: 15vw;
+ width: 300px;
+ max-width: 300px;
+ min-width: 300px;
+ height:300px;
+ min-height:300px;
+ max-height:300px;
  overflow: hidden;
  border-radius: 20px;
 `;
 
 export const CardImage = styled.img`
-width: 15vw;
+width: 270px;
+min-width: 270px;
+max-width: 270px;
+height: 270px;
+min-height: 270px;
+max-height: 270px;
 border-radius: 50%;
 opacity: 0.8;
 :hover{
@@ -147,6 +193,7 @@ export const WrapQuickInfo = styled.div`
  gap: 0.5rem;
  h3{
   color: var(--primary);
+  flex-wrap: wrap;
  }
  h4{
   color: var(--words);

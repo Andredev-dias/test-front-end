@@ -1,3 +1,8 @@
+## Andre Dias Test
+
+Fiz: Usando axios, consumi a api da query caracters, com info resumidas em cards na primeira pagina, abrindo um modal com informacoes extras. Tratamento de data, adaptativo ate 425px em width, css com styled compoenents, useEffect assyncrono, e componentizacao do modal apenas por nao achar necessario mais componentes e complexar uma projeto de landing page simples. Filtro por nome, por escrita do usuario e escolha de paginas tambem pelo usuario.
+
+Obs: linha do localStorage comentada, nao vi necessidade e afetava minha paginacao. Layout divertido por ser um desenho e me dar liberdade para tal.
 ## Teste de Frontend
 
 Fala, dev! Tudo bem?

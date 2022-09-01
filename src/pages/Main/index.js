@@ -16,7 +16,9 @@ import
  CardImage,
  WrapImageCard,
  WrapQuickInfo,
- BtnMoreInfo} from './styles';
+ BtnMoreInfo,
+ PageInput,
+ WrapPageInput} from './styles';
 
 const Main = () => {
 
@@ -25,13 +27,7 @@ const [search, setSearch] = useState("");
 const [modal, setModal] = useState();
 const [page, setPage] = useState(1);
 
-
-
-const handlePage = (
-    e
-  ) => {
-    setPage(e.target.value)
-  };
+const handlePage = (e) => {setPage(e.target.value)};
 
 useEffect(() => {
     const local = localStorage.getItem('data');
@@ -56,7 +52,7 @@ useEffect(() => {
             </WrapBN>
             <WrapSearch>
                 <SearchInput placeholder='Type a caracter name...' type="text" value={search} onChange={(e) => setSearch(e.target.value)}/>
-                <label htmlFor="number">Type 1 to 826</label><input id='number' type="number" value={page} onChange={handlePage}/>
+                <WrapPageInput><label htmlFor="number">Pages:</label><PageInput max={42} min={1} id='number' type="number" value={page} onChange={handlePage}/></WrapPageInput>  
             </WrapSearch>
             <WrapMap>
             {caracters.map((item, index) =>
